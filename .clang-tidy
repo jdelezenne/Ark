@@ -1,0 +1,78 @@
+Checks: >-
+  -*,
+  clang-analyzer-*,
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+  modernize-avoid-c-arrays,
+  modernize-deprecated-headers,
+  modernize-make-unique,
+  modernize-use-nullptr,
+  modernize-use-override,
+  modernize-use-using,
+  readability-braces-around-statements,
+  readability-identifier-naming,
+  readability-implicit-bool-conversion,
+  google-build-using-namespace,
+  hicpp-avoid-goto,
+  cppcoreguidelines-avoid-goto,
+  cppcoreguidelines-macro-usage,
+  cppcoreguidelines-owning-memory
+
+WarningsAsErrors: false
+HeaderFilterRegex: '^(?!.*(/Build/|/Binaries/|/Code/CMake/|/Scripts/|/External/|/Code/_Extensions/.*/External/|/third_party/|/vendor/)).*'
+FormatStyle: file
+CheckOptions:
+  - key: readability-braces-around-statements.ShortStatementLines
+    value: '0'
+  - key: readability-implicit-bool-conversion.AllowIntegerConditions
+    value: 'false'
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: 'false'
+  - key: readability-implicit-bool-conversion.AllowNullPointerConstant
+    value: 'false'
+  - key: readability-implicit-bool-conversion.AllowConditionalOperator
+    value: 'false'
+  - key: readability-implicit-bool-conversion.BoolPointerImplicitConversion
+    value: 'false'
+  - key: readability-implicit-bool-conversion.AllowIntegerCasts
+    value: 'false'
+  - key: readability-identifier-naming.ClassCase
+    value: PascalCase
+  - key: readability-identifier-naming.StructCase
+    value: PascalCase
+  - key: readability-identifier-naming.EnumCase
+    value: PascalCase
+  - key: readability-identifier-naming.EnumConstantCase
+    value: PascalCase
+  - key: readability-identifier-naming.UnionCase
+    value: PascalCase
+  - key: readability-identifier-naming.NamespaceCase
+    value: PascalCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.MemberCase
+    value: camelBack
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+  - key: readability-identifier-naming.TypeAliasCase
+    value: PascalCase
+  - key: readability-identifier-naming.TypedefCase
+    value: PascalCase
+  - key: readability-identifier-naming.GlobalConstantCase
+    value: PascalCase
+  - key: readability-identifier-naming.ConstantCase
+    value: PascalCase
+  - key: readability-identifier-naming.StaticConstantCase
+    value: PascalCase
+  - key: readability-identifier-naming.ConstexprVariableCase
+    value: PascalCase
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.MacroDefinitionPrefix
+    value: MOSAIC_
+  - key: readability-identifier-naming.MacroDefinitionIgnoredRegexp
+    value: '^(ARK_|SDL_|STB_|ZLIB_|QOI_|FFMPEG_|GIFLIB_|LIBARCHIVE_|LIBDEFLATE_|CURL_|SPNG_|GLFW_|FREETYPE_).+'

@@ -1,0 +1,34 @@
+{
+    "files.exclude": {
+        ".backups": true,
+        ".git": true,
+        ".cache": true,
+        "Binaries": true,
+        "Build": true,
+        "Internal": true,
+        "External": true
+    },
+    "search.exclude": {
+        ".backups": true,
+        ".git": true,
+        ".cache": true,
+        "Binaries": true,
+        "Build": true,
+        "Internal": true,
+        "External": true,
+        "**/*.md": true,
+        "*.md": true
+    },
+    "editor.formatOnSave": true,
+    "search.useIgnoreFiles": true,
+    "cmake.testExplorerIntegrationEnabled": false,
+    "cmake.ctest.testExplorerIntegrationEnabled": false,
+    "cmake.configureArgs": [
+        "-DOFFWORLD_OPTION_ARK=ON",
+        "-DOFFWORLD_OPTION_ARTEFACT=ON",
+        "-DOFFWORLD_OPTION_MOSAIC=OFF",
+        "-DARK_OPTION_BUILD_EXAMPLES=ON",
+        "-DARK_OPTION_BUILD_TESTS=ON",
+        "-DARTEFACT_EXTENSIONS_SHARED=ON"
+    ]
+}

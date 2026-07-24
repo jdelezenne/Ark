@@ -1,0 +1,311 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": {
+        "major": 4,
+        "minor": 2,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "${sourceDir}/Build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_CXX_STANDARD": "23",
+                "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+                "BUILD_TESTING": "ON",
+                "ARK_OPTION_BUILD_TESTS": "ON"
+            }
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "windows-msvc",
+            "displayName": "Windows MSVC",
+            "description": "Windows with Visual Studio 2022",
+            "inherits": "base",
+            "generator": "Visual Studio 17 2022",
+            "architecture": {
+                "value": "x64",
+                "strategy": "set"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-ninja-debug",
+            "displayName": "Windows Ninja Debug",
+            "description": "Windows with Ninja and MSVC - Debug",
+            "inherits": [
+                "base",
+                "debug"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-ninja-release",
+            "displayName": "Windows Ninja Release",
+            "description": "Windows with Ninja and MSVC - Release",
+            "inherits": [
+                "base",
+                "release"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-clang-debug",
+            "displayName": "Windows Clang Debug",
+            "description": "Windows with Ninja and Clang - Debug",
+            "inherits": [
+                "base",
+                "debug"
+            ],
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "windows-clang-release",
+            "displayName": "Windows Clang Release",
+            "description": "Windows with Ninja and Clang - Release",
+            "inherits": [
+                "base",
+                "release"
+            ],
+            "generator": "Ninja",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++"
+            },
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "macos-ninja-debug",
+            "displayName": "macOS Ninja Debug",
+            "description": "macOS with Ninja and Apple Clang - Debug",
+            "inherits": [
+                "base",
+                "debug"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "macos-ninja-release",
+            "displayName": "macOS Ninja Release",
+            "description": "macOS with Ninja and Apple Clang - Release",
+            "inherits": [
+                "base",
+                "release"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "macos-xcode",
+            "displayName": "macOS Xcode",
+            "description": "macOS with Xcode",
+            "inherits": "base",
+            "generator": "Xcode",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Darwin"
+            }
+        },
+        {
+            "name": "linux-ninja-debug",
+            "displayName": "Linux Ninja Debug",
+            "description": "Linux with Ninja and GCC - Debug",
+            "inherits": [
+                "base",
+                "debug"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        },
+        {
+            "name": "linux-ninja-release",
+            "displayName": "Linux Ninja Release",
+            "description": "Linux with Ninja and GCC - Release",
+            "inherits": [
+                "base",
+                "release"
+            ],
+            "generator": "Ninja",
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "windows-msvc-debug",
+            "displayName": "Windows MSVC Debug",
+            "configurePreset": "windows-msvc",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-msvc-release",
+            "displayName": "Windows MSVC Release",
+            "configurePreset": "windows-msvc",
+            "configuration": "Release"
+        },
+        {
+            "name": "windows-ninja-debug",
+            "displayName": "Windows Ninja Debug",
+            "configurePreset": "windows-ninja-debug"
+        },
+        {
+            "name": "windows-ninja-release",
+            "displayName": "Windows Ninja Release",
+            "configurePreset": "windows-ninja-release"
+        },
+        {
+            "name": "windows-clang-debug",
+            "displayName": "Windows Clang Debug",
+            "configurePreset": "windows-clang-debug"
+        },
+        {
+            "name": "windows-clang-release",
+            "displayName": "Windows Clang Release",
+            "configurePreset": "windows-clang-release"
+        },
+        {
+            "name": "macos-ninja-debug",
+            "displayName": "macOS Ninja Debug",
+            "configurePreset": "macos-ninja-debug"
+        },
+        {
+            "name": "macos-ninja-release",
+            "displayName": "macOS Ninja Release",
+            "configurePreset": "macos-ninja-release"
+        },
+        {
+            "name": "macos-xcode-debug",
+            "displayName": "macOS Xcode Debug",
+            "configurePreset": "macos-xcode",
+            "configuration": "Debug"
+        },
+        {
+            "name": "macos-xcode-release",
+            "displayName": "macOS Xcode Release",
+            "configurePreset": "macos-xcode",
+            "configuration": "Release"
+        },
+        {
+            "name": "linux-ninja-debug",
+            "displayName": "Linux Ninja Debug",
+            "configurePreset": "linux-ninja-debug"
+        },
+        {
+            "name": "linux-ninja-release",
+            "displayName": "Linux Ninja Release",
+            "configurePreset": "linux-ninja-release"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "windows-msvc-debug",
+            "configurePreset": "windows-msvc",
+            "configuration": "Debug"
+        },
+        {
+            "name": "windows-msvc-release",
+            "configurePreset": "windows-msvc",
+            "configuration": "Release"
+        },
+        {
+            "name": "windows-ninja-debug",
+            "configurePreset": "windows-ninja-debug"
+        },
+        {
+            "name": "windows-ninja-release",
+            "configurePreset": "windows-ninja-release"
+        },
+        {
+            "name": "windows-clang-debug",
+            "configurePreset": "windows-clang-debug"
+        },
+        {
+            "name": "windows-clang-release",
+            "configurePreset": "windows-clang-release"
+        },
+        {
+            "name": "macos-ninja-debug",
+            "configurePreset": "macos-ninja-debug"
+        },
+        {
+            "name": "macos-ninja-release",
+            "configurePreset": "macos-ninja-release"
+        },
+        {
+            "name": "macos-xcode-debug",
+            "configurePreset": "macos-xcode",
+            "configuration": "Debug"
+        },
+        {
+            "name": "macos-xcode-release",
+            "configurePreset": "macos-xcode",
+            "configuration": "Release"
+        },
+        {
+            "name": "linux-ninja-debug",
+            "configurePreset": "linux-ninja-debug"
+        },
+        {
+            "name": "linux-ninja-release",
+            "configurePreset": "linux-ninja-release"
+        }
+    ]
+}
